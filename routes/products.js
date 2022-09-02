@@ -66,9 +66,7 @@ router.put('/products/:id', validarProductId, validarInputsProduct, (req, res) =
 
 router.delete('/products/:id', validarProductId, (req, res) => {
   let {id} = req.params;
-  let prod = products.find( p => p.id === id);
-
-  //if(!prod) return res.status(200).send({status: 'ERROR', result: `No existe producto con ID ${id}`});
+  let prod = products.find( p => p.id === id);  
 
   products = products.filter( p => p.id !== id);
   res.status(200).send({status: 'OK', result: `Producto ID ${id} borrado correctamente`});
