@@ -2,7 +2,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const router = express.Router();
-let products = require('../data/products_data');
+let products = require('../data/products_data'); 
 
 // Middleware para validar lo que viene en el body como dato de entrada
 const validarInputsProduct = (req,res,next) => {
@@ -39,11 +39,11 @@ router.get('/products/:id', validarProductId, (req, res) => {
 
 router.post('/products', validarInputsProduct, (req, res) => {
 
-  let producto = req.body;
-  producto.id = crypto.randomUUID();
-  products.push(producto);
+  let producto = req.body;  
+  producto.id = crypto.randomUUID();  
 
-  res.status(200).send({result: producto});  
+  products.push(producto);  
+  res.status(200).send({status: 'OK', result: producto});  
 });
 
 
