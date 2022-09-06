@@ -40,6 +40,8 @@ form_prod.addEventListener('submit', (e) => {
   
 });
 
+
+
 input_name.addEventListener('focus', (e) => {
   msj.innerText = '';
 });
@@ -47,3 +49,4 @@ input_name.addEventListener('focus', (e) => {
 input_price.addEventListener('focus', (e) => {
   msj.innerText = '';
 });
+

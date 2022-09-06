@@ -25,11 +25,11 @@ const validarProductId = (req,res,next) => {
   existe ? next() : res.status(200).send({ status:'ERROR', result: `No existe producto con ID ${id}`});
 }
 
-router.get('/productos', (req, res) => {
+router.get('/', (req, res) => {
   res.status(200).send({status: 'OK', result:products});
 });
 
-router.get('/productos/:id', validarProductId, (req, res) => {
+router.get('/:id', validarProductId, (req, res) => {
   let {id} = req.params;
   let prod = products.find( p => p.id === id);  
 
@@ -37,7 +37,7 @@ router.get('/productos/:id', validarProductId, (req, res) => {
   res.status(200).send({status: 'OK', result: prod})        
 });
 
-router.post('/productos', validarInputsProduct, (req, res) => {
+router.post('/', validarInputsProduct, (req, res) => {
 
   let producto = req.body;  
   producto.id = crypto.randomUUID();  
@@ -47,7 +47,7 @@ router.post('/productos', validarInputsProduct, (req, res) => {
 });
 
 
-router.put('/productos/:id', validarProductId, validarInputsProduct, (req, res) => {
+router.put('/:id', validarProductId, validarInputsProduct, (req, res) => {
   let {id} = req.params;
 
   // El producto existe porq pasó la validación de ID (validarProductId)
@@ -64,7 +64,7 @@ router.put('/productos/:id', validarProductId, validarInputsProduct, (req, res) 
 });
 
 
-router.delete('/productos/:id', validarProductId, (req, res) => {
+router.delete('/:id', validarProductId, (req, res) => {
   let {id} = req.params;
   let prod = products.find( p => p.id === id);  
 

@@ -8,5 +8,5 @@ app.listen(8080, () => console.log('Server Up!!'));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/api', productsRouter);
+app.use('/api/productos', productsRouter);
 
