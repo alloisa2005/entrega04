@@ -10,3 +10,6 @@ app.use(express.static('public'));
 
 app.use('/api/productos', productsRouter);
 
+app.get('/*', (req, res) => {
+  res.status(404).send({status: 'ERROR', result: 'Path not defined'});
+});
